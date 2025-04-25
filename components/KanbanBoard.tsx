@@ -29,13 +29,10 @@ import {
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
-/* ------------------------------------------------------------------
- * Types
- * ------------------------------------------------------------------*/
 export type Status = 'todo' | 'doing' | 'inreview' | 'done';
 interface TaskCardProps {
     task: Task;
-    dragOverlay?: boolean;   // 🆕
+    dragOverlay?: boolean;
 }
 export interface Task {
     id: number;
@@ -43,7 +40,7 @@ export interface Task {
     name: string;
     successPercent: number;
     importance: number; // 1-5
-    timeline: string;   // "6 days"
+    timeline: string;
     status: Status;
     order: number;
 }
@@ -53,7 +50,7 @@ export interface Comment {
     taskId: number;
     author: string;
     message: string;
-    date: string; // YYYY-MM-DD
+    date: string;
 }
 
 const TITLE: Record<Status, string> = {
@@ -63,9 +60,6 @@ const TITLE: Record<Status, string> = {
     done: 'Done',
 };
 
-/* ------------------------------------------------------------------
- * Main component
- * ------------------------------------------------------------------*/
 const KanbanBoard: React.FC = () => {
     const [tasks, setTasks] = useState<Record<Status, Task[]>>({
         todo: [],
@@ -74,7 +68,7 @@ const KanbanBoard: React.FC = () => {
         done: [],
     });
 
-    /* ---------- Add-task modal state ---------- */
+
     const [modalStatus, setModalStatus] = useState<Status | null>(null);
     const [formCategory, setFormCategory] = useState('');
     const [formName, setFormName] = useState('');
@@ -84,7 +78,7 @@ const KanbanBoard: React.FC = () => {
     const [formInitialComment, setFormInitialComment] = useState('');
     const [activeTask, setActiveTask] = useState<Task | null>(null);
 
-    /* ---------- Fetch once ---------- */
+
     useEffect(() => {
         (async () => {
             const statuses: Status[] = ['todo', 'doing', 'inreview', 'done'];
@@ -120,49 +114,49 @@ const KanbanBoard: React.FC = () => {
             }),
         }).catch(console.error);
 
-    const handleDragEnd = (event: DragEndEvent) => {
+
+    const handleDragEnd = async (event: DragEndEvent) => {
         const { active, over } = event;
         if (!over) return;
 
         const [fromSt, fromId] = active.id.toString().split(':') as [Status, string];
         const [toSt,   toId]   = over.id.toString().split(':')   as [Status, string];
-
         if (fromSt === toSt && fromId === toId) return;
 
-        setTasks(prev => {
-            const src  = [...prev[fromSt]];
-            const dest = fromSt === toSt ? src : [...prev[toSt]];
 
-            const movedIdx = src.findIndex(t => t.id === +fromId);
-            const [moved]  = src.splice(movedIdx, 1);
+        const src  = [...tasks[fromSt]];
+        const dest = fromSt === toSt ? src : [...tasks[toSt]];
 
-            const hoverIdx = dest.findIndex(t => t.id === +toId);
-            const insertAt = hoverIdx === -1 ? dest.length : hoverIdx;
-            dest.splice(insertAt, 0, { ...moved, status: toSt });
+        const movedIdx = src.findIndex(t => t.id === +fromId);
+        const [moved]  = src.splice(movedIdx, 1);
 
-            // yeni order alanlarını yaz
-            dest.forEach((t, i) => (t.order = i));
-            if (fromSt !== toSt) src.forEach((t, i) => (t.order = i));
+        const hoverIdx = dest.findIndex(t => t.id === +toId);
+        const insertAt = hoverIdx === -1 ? dest.length : hoverIdx;
+        dest.splice(insertAt, 0, { ...moved, status: toSt });
 
-            // Persist
-            persistOrder(toSt, dest);
-            if (fromSt !== toSt) persistOrder(fromSt, src);
 
-            // Status değiştiyse ayrıca PATCH et
-            if (fromSt !== toSt) {
-                fetch(`/api/tasks?id=${fromId}`, {
-                    method: 'PUT',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ status: toSt }),
-                }).catch(console.error);
-            }
+        dest.forEach((t, i) => (t.order = i));
+        if (fromSt !== toSt) src.forEach((t, i) => (t.order = i));
 
-            return { ...prev, [fromSt]: src, [toSt]: dest };
-        });
+        setTasks(prev => ({ ...prev, [fromSt]: src, [toSt]: dest }));
+
+
+        if (fromSt !== toSt) {
+
+            await fetch(`/api/tasks?id=${fromId}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ status: toSt }),
+            }).catch(console.error);
+        }
+
+        await persistOrder(toSt, dest);
+        if (fromSt !== toSt) await persistOrder(fromSt, src);
     };
 
 
-    /* ---------- Add-task helpers ---------- */
+
+
     const isPercentValid = Number.isFinite(formPercent) && (formPercent as number) >= 0 && (formPercent as number) <= 100;
     const isImportanceValid = Number.isFinite(formImportance) && (formImportance as number) >= 1 && (formImportance as number) <= 5;
     const isTimelineValid = Number.isFinite(formTimeline) && (formTimeline as number) >= 1;
@@ -194,7 +188,7 @@ const KanbanBoard: React.FC = () => {
 
         setTasks(prev => ({ ...prev, [modalStatus]: [newTask, ...prev[modalStatus]] }));
 
-        /* optional first comment */
+
         if (formInitialComment.trim()) {
             const firstComment: Comment = {
                 id: Date.now(),
@@ -228,10 +222,10 @@ const KanbanBoard: React.FC = () => {
         const [st, id] = e.active.id.toString().split(':') as [Status, string];
         setActiveTask(tasks[st].find(t => t.id === +id) ?? null);
     };
-    /* ---------- Render ---------- */
+
     return (
         <DndContext sensors={sensors} onDragStart={handleDragStart} collisionDetection={closestCorners} onDragEnd={handleDragEnd}>
-            <div className="grid noscrollbar grid-cols-4 overflow-y-scroll overflow-x-visible h-full gap-4">
+            <div className="grid noscrollbar  grid-cols-4 overflow-y-scroll overflow-x-visible h-full gap-3 lg:gap-4">
                 {(Object.keys(TITLE) as Status[]).map(status => (
                     <Column key={status} status={status} tasks={tasks[status]} openAdd={setModalStatus} />
                 ))}
@@ -271,9 +265,6 @@ const KanbanBoard: React.FC = () => {
     );
 };
 
-/* ------------------------------------------------------------------
- * Column (droppable)
- * ------------------------------------------------------------------*/
 interface ColumnProps {
     status: Status;
     tasks: Task[];
@@ -282,7 +273,7 @@ interface ColumnProps {
 
 
 const Column: React.FC<ColumnProps> = ({ status, tasks, openAdd }) => (
-    <div className="w-full h-full noscrollbar overflow-y-scroll overflow-x-visible p-4">
+    <div className="w-full h-full noscrollbar overflow-y-scroll overflow-x-visible p-0 xl:p-4">
         <div className="sticky top-[-20px] z-10 bg-[#F0F5FF] flex justify-center items-center gap-4  mb-4 py-2">
             <h6 className="poppins-semibold text-[25px]">{TITLE[status]}</h6>
             <svg onClick={() => openAdd(status)} className="w-5 h-5 cursor-pointer" viewBox="0 0 12 12" fill="none">
@@ -298,9 +289,6 @@ const Column: React.FC<ColumnProps> = ({ status, tasks, openAdd }) => (
     </div>
 );
 
-/* ------------------------------------------------------------------
- * Task card (draggable)
- * ------------------------------------------------------------------*/
 const TaskCard: React.FC<TaskCardProps> = ({ task, dragOverlay = false }) => {
     const {
         attributes,
@@ -333,14 +321,14 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, dragOverlay = false }) => {
             {...wrapperProps}
             className="bg-white shadow-md rounded-[25px] p-5 pb-3 flex flex-col mb-5 select-none"
         >
-            {/* Category pill */}
+
             <div className={`p-2 rounded-[30px] w-fit ${importanceBg}`}>
                 <p className="text-xs">{task.category}</p>
             </div>
 
             <h6 className="mt-4 poppins-semibold text-[16px]">{task.name}</h6>
 
-            {/* Progress bar */}
+
             <div className="mt-2 flex flex-col gap-1">
                 <div className="flex justify-end text-xs">%{task.successPercent}</div>
                 <div className="relative h-[7px]">
@@ -360,9 +348,6 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, dragOverlay = false }) => {
     );
 };
 
-/* ------------------------------------------------------------------
- * Modal component
- * ------------------------------------------------------------------*/
 interface AddTaskModalProps {
     status: Status;
     title: string;

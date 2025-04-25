@@ -5,24 +5,33 @@ import { Task } from '@/types';
 
 const FILE = path.join(process.cwd(), 'data', 'tasks.json');
 
-/* ---------- Helpers ---------- */
+
 async function readTasks(): Promise<Task[]> {
     try {
         const raw = await fs.readFile(FILE, 'utf-8');
         return raw.trim() ? JSON.parse(raw) : [];
-    } catch (err :any) {
+    } catch (err: any) {
         if (err.code === 'ENOENT') return [];
-        console.error('tasks.json parse hatası:', err);
-        return [];""
+
+
+        console.error('tasks.json bozuk! İçerik:', await fs.readFile(FILE, 'utf-8'));
+        console.error('Parse hatası:', err);
+        return [];
     }
 }
 
+import { writeFile } from 'fs/promises';
+import { tmpdir } from 'os';
+import crypto from 'crypto';
+
 async function writeTasks(list: Task[]) {
+    const tmp = path.join(tmpdir(), crypto.randomUUID());
+    await writeFile(tmp, JSON.stringify(list, null, 2)); // önce tmp’ye yaz
     await fs.mkdir(path.dirname(FILE), { recursive: true });
-    await fs.writeFile(FILE, JSON.stringify(list, null, 2));
+    await fs.rename(tmp, FILE);                          // sonra atomik rename
 }
 
-/* ---------- GET  (?status=todo/…) ---------- */
+
 export async function GET(req: NextRequest) {
     const status = req.nextUrl.searchParams.get('status');
     const list   = await readTasks();
@@ -31,7 +40,7 @@ export async function GET(req: NextRequest) {
     );
 }
 
-/* ---------- POST (yeni görev) --------------- */
+
 export async function POST(req: NextRequest) {
     const task: Task = await req.json();
     const list = await readTasks();
@@ -40,14 +49,14 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(task, { status: 201 });
 }
 
-/* ---------- PUT  (id ile kısmi update) ------ */
+
 export async function PUT(req: NextRequest) {
     const idParam = req.nextUrl.searchParams.get('id');
     if (!idParam) {
         return NextResponse.json({ error: 'id parametresi eksik' }, { status: 400 });
     }
     const id    = Number(idParam);
-    const patch = await req.json();               // { status:'doing', ... }
+    const patch = await req.json();
 
     const list = await readTasks();
     const idx  = list.findIndex(t => t.id === id);
@@ -57,5 +66,5 @@ export async function PUT(req: NextRequest) {
 
     list[idx] = { ...list[idx], ...patch };
     await writeTasks(list);
-    return NextResponse.json(list[idx]);          // 200 OK
+    return NextResponse.json(list[idx]);
 }

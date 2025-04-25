@@ -5,7 +5,7 @@ import { Task } from '@/types';
 
 const FILE = path.join(process.cwd(), 'data', 'tasks.json');
 
-/* ---------- Helpers ---------- */
+
 async function read(): Promise<Task[]> {
     try {
         const raw = await fs.readFile(FILE, 'utf-8');
@@ -20,7 +20,7 @@ async function write(list: Task[]) {
     await fs.writeFile(FILE, JSON.stringify(list, null, 2));
 }
 
-/* ---------- PUT  (kolon içi sıralama) ------- */
+
 export async function PUT(req: NextRequest) {
     const { status, orderedIds } = await req.json() as {
         status: 'todo' | 'doing' | 'inreview' | 'done';
