@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+
 import "./globals.css";
 import './style.css'
 import './font.css'
-import LeftMenu from "@/components/LeftMenu";
 import React from "react";
 
 export const metadata: Metadata = {

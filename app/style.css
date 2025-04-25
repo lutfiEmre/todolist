@@ -25,3 +25,37 @@
 .noscrollbar::-webkit-scrollbar {
     display: none;
 }
+
+@keyframes flame-spin {
+    0%   { transform: rotate(0deg)   scale(1);   filter: hue-rotate(0deg);   }
+    50%  { transform: rotate(180deg) scale(1.06);filter: hue-rotate(60deg); }
+    100% { transform: rotate(360deg) scale(1);   filter: hue-rotate(0deg);   }
+}
+
+.flame-ring::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 30px;
+    pointer-events: none;
+    z-index: -1;
+
+
+    background: conic-gradient(
+            transparent 0deg 30deg,
+            #32ff75 30deg 60deg,
+            transparent 60deg 90deg,
+            #00ff66 90deg 120deg,
+            transparent 120deg 150deg,
+            #12ff7e 150deg 180deg,
+            transparent 180deg 210deg,
+            #00ff6e 210deg 240deg,
+            transparent 240deg 270deg,
+            #29ff87 270deg 300deg,
+            transparent 300deg 330deg,
+            #41ffa0 330deg 360deg
+    );
+
+    filter: blur(6px) saturate(160%);
+    animation: flame-spin 4s linear infinite;
+}

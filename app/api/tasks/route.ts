@@ -50,6 +50,17 @@ export async function POST(req: NextRequest) {
 }
 
 
+export async function DELETE(req: NextRequest) {
+    const idParam = req.nextUrl.searchParams.get('id');
+    if (!idParam) {
+        return NextResponse.json({ error: 'id parametresi eksik' }, { status: 400 });
+    }
+    const id = Number(idParam);
+    const list = await readTasks();
+    const newList = list.filter(t => t.id !== id);
+    await writeTasks(newList);
+    return NextResponse.json({ success: true }, { status: 200 });
+}
 export async function PUT(req: NextRequest) {
     const idParam = req.nextUrl.searchParams.get('id');
     if (!idParam) {
@@ -68,3 +79,4 @@ export async function PUT(req: NextRequest) {
     await writeTasks(list);
     return NextResponse.json(list[idx]);
 }
+

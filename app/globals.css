@@ -1,2 +1,49 @@
 @import "tailwindcss";
 
+
+/* 1. Büyük, yumuşak glow + hafif büyüme küçülme */
+@keyframes green-flame-glow {
+    0%, 100% {
+        box-shadow: 0 0 4px rgb(59, 147, 63, 0.16), 0 0 12px rgba(59, 147, 63, 0.25);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 12px rgba(59, 147, 63, 0.16), 0 0 24px rgba(255, 13, 13, 0.16);
+        transform: scale(1);
+    }
+}
+
+/* 2. Hızlı, rastgele şiddetli titreme */
+@keyframes green-flame-flicker {
+    0%, 100% { opacity: 0; }
+    25% { opacity: 0.2; }
+    50% { opacity: 0.2; }
+    75% { opacity: 0.4; }
+}
+
+/* wrapper’a uygulanacak sınıf */
+.effect-flame {
+    position: relative;
+    z-index: 1;             /* altındaki içeriğe dokunmasın */
+}
+
+/* glow katmanı */
+.effect-flame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 29px;
+    pointer-events: none;
+    animation: green-flame-glow 4s ease-in-out infinite;
+}
+
+/* flicker katmanı */
+.effect-flame::after {
+    content: "";
+    position: absolute;
+    border-radius: 29px;
+    pointer-events: none;
+    background: rgba(23, 255, 32, 0.05);
+    filter: blur(10px);
+    animation: green-flame-flicker 0.5s steps(4) infinite;
+}

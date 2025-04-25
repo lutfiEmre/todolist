@@ -1,208 +1,13 @@
 [
   {
-    "id": 15,
-    "category": "Deploy",
-    "name": "Deploy frontend to Vercel",
-    "successPercent": 100,
-    "importance": 4,
-    "timeline": "1 day",
-    "status": "done"
-  },
-  {
-    "id": 16,
-    "category": "Deploy",
-    "name": "Migrate database to production",
-    "successPercent": 100,
-    "importance": 5,
-    "timeline": "1 day",
-    "status": "done"
-  },
-  {
-    "id": 17,
-    "category": "Testing",
-    "name": "End-to-end testing passed",
-    "successPercent": 100,
-    "importance": 4,
-    "timeline": "1 day",
-    "status": "done"
-  },
-  {
-    "id": 18,
-    "category": "Docs",
-    "name": "Complete project documentation",
-    "successPercent": 100,
-    "importance": 3,
-    "timeline": "1 day",
-    "status": "done"
-  },
-  {
-    "id": 19,
-    "category": "Optimization",
-    "name": "Optimize performance and bundle size",
-    "successPercent": 100,
-    "importance": 5,
-    "timeline": "1 day",
-    "status": "done"
-  },
-  {
-    "id": 7,
-    "category": "API",
-    "name": "Build comment system with REST API",
-    "successPercent": 25,
-    "importance": 4,
-    "timeline": "4 days",
-    "status": "inreview",
-    "order": 0
-  },
-  {
-    "id": 12,
-    "category": "Review",
-    "name": "API error handling check",
-    "successPercent": 80,
-    "importance": 4,
-    "timeline": "1 day",
-    "status": "inreview",
-    "order": 1
-  },
-  {
-    "id": 8,
-    "category": "UI",
-    "name": "Design responsive dashboard layout",
-    "successPercent": 60,
-    "importance": 3,
-    "timeline": "2 days",
-    "status": "inreview",
-    "order": 2
-  },
-  {
-    "id": 1,
-    "category": "Frontend",
-    "name": "Create login page with TailwindCSS",
-    "successPercent": 0,
-    "importance": 4,
-    "timeline": "3 days",
-    "status": "inreview",
-    "order": 3
-  },
-  {
     "id": 3,
     "category": "Database",
     "name": "Setup PostgreSQL schema",
     "successPercent": 0,
     "importance": 3,
     "timeline": "2 days",
-    "status": "todo",
+    "status": "inreview",
     "order": 0
-  },
-  {
-    "id": 4,
-    "category": "DevOps",
-    "name": "Create CI pipeline on GitHub Actions",
-    "successPercent": 0,
-    "importance": 4,
-    "timeline": "2 days",
-    "status": "todo",
-    "order": 1
-  },
-  {
-    "id": 5,
-    "category": "Auth",
-    "name": "Integrate JWT authentication",
-    "successPercent": 0,
-    "importance": 5,
-    "timeline": "3 days",
-    "status": "todo",
-    "order": 2
-  },
-  {
-    "id": 2,
-    "category": "Backend",
-    "name": "Design API endpoints for task management",
-    "successPercent": 0,
-    "importance": 5,
-    "timeline": "4 days",
-    "status": "doing",
-    "order": 0
-  },
-  {
-    "id": 14,
-    "category": "Review",
-    "name": "Final review for frontend components",
-    "successPercent": 95,
-    "importance": 5,
-    "timeline": "1 day",
-    "status": "doing",
-    "order": 1
-  },
-  {
-    "id": 1745578834213,
-    "category": "4",
-    "name": "4",
-    "successPercent": 2,
-    "importance": 2,
-    "timeline": "4 days",
-    "status": "doing",
-    "order": 2
-  },
-  {
-    "id": 1745579169973,
-    "category": "asd",
-    "name": "asd",
-    "successPercent": 4,
-    "importance": 4,
-    "timeline": "4 days",
-    "status": "doing",
-    "order": 3
-  },
-  {
-    "id": 1745577547246,
-    "category": "emrelutfi ",
-    "name": "test",
-    "successPercent": 25,
-    "importance": 4,
-    "timeline": "5 days",
-    "status": "doing",
-    "order": 4
-  },
-  {
-    "id": 11,
-    "category": "Review",
-    "name": "Code review for drag-and-drop feature",
-    "successPercent": 90,
-    "importance": 3,
-    "timeline": "1 day",
-    "status": "doing",
-    "order": 5
-  },
-  {
-    "id": 13,
-    "category": "Review",
-    "name": "Check accessibility compliance",
-    "successPercent": 85,
-    "importance": 3,
-    "timeline": "2 days",
-    "status": "doing",
-    "order": 6
-  },
-  {
-    "id": 6,
-    "category": "Frontend",
-    "name": "Implement drag-and-drop Kanban board",
-    "successPercent": 40,
-    "importance": 5,
-    "timeline": "5 days",
-    "status": "doing",
-    "order": 7
-  },
-  {
-    "id": 9,
-    "category": "Testing",
-    "name": "Write unit tests for utils",
-    "successPercent": 30,
-    "importance": 4,
-    "timeline": "2 days",
-    "status": "doing",
-    "order": 8
   },
   {
     "id": 10,
@@ -211,7 +16,137 @@
     "successPercent": 50,
     "importance": 5,
     "timeline": "3 days",
+    "status": "inreview",
+    "order": 1
+  },
+  {
+    "id": 14,
+    "category": "Review",
+    "name": "Final review for frontend components",
+    "successPercent": 100,
+    "importance": 5,
+    "timeline": "1 day",
     "status": "doing",
-    "order": 9
+    "order": 0
+  },
+  {
+    "id": 17,
+    "category": "Testing",
+    "name": "End-to-end testing passed",
+    "successPercent": 40,
+    "importance": 4,
+    "timeline": "1 day",
+    "status": "doing",
+    "order": 1
+  },
+  {
+    "id": 1,
+    "category": "Frontend",
+    "name": "Create login page with TailwindCSS",
+    "successPercent": 15,
+    "importance": 4,
+    "timeline": "3 days",
+    "status": "doing",
+    "order": 2
+  },
+  {
+    "id": 1745586706793,
+    "category": "bu bitti adamım",
+    "name": "finito",
+    "successPercent": 50,
+    "importance": 5,
+    "timeline": "4 days",
+    "status": "todo",
+    "order": 0
+  },
+  {
+    "id": 18,
+    "category": "Docs",
+    "name": "Complete project documentation",
+    "successPercent": 50,
+    "importance": 3,
+    "timeline": "1 day",
+    "status": "todo",
+    "order": 1
+  },
+  {
+    "id": 1745586647743,
+    "category": "merhaba linkedin",
+    "name": "emrelutfi",
+    "successPercent": 65,
+    "importance": 4,
+    "timeline": "3 days",
+    "status": "todo",
+    "order": 2
+  },
+  {
+    "id": 8,
+    "category": "UI",
+    "name": "Design responsive dashboard layout",
+    "successPercent": 100,
+    "importance": 3,
+    "timeline": "2 days",
+    "status": "done",
+    "order": 0
+  },
+  {
+    "id": 1745581900716,
+    "category": "emre test",
+    "name": "emre",
+    "successPercent": 24,
+    "importance": 4,
+    "timeline": "4 days",
+    "status": "done",
+    "order": 1
+  },
+  {
+    "id": 5,
+    "category": "Auth",
+    "name": "Integrate JWT authentication",
+    "successPercent": 100,
+    "importance": 5,
+    "timeline": "3 days",
+    "status": "done",
+    "order": 2
+  },
+  {
+    "id": 9,
+    "category": "Testing",
+    "name": "Write unit tests for utils",
+    "successPercent": 100,
+    "importance": 4,
+    "timeline": "2 days",
+    "status": "done",
+    "order": 3
+  },
+  {
+    "id": 7,
+    "category": "API",
+    "name": "Build comment system with REST API",
+    "successPercent": 100,
+    "importance": 4,
+    "timeline": "4 days",
+    "status": "done",
+    "order": 4
+  },
+  {
+    "id": 12,
+    "category": "Review",
+    "name": "API error handling check",
+    "successPercent": 100,
+    "importance": 4,
+    "timeline": "1 day",
+    "status": "done",
+    "order": 5
+  },
+  {
+    "id": 16,
+    "category": "Deploy",
+    "name": "Migrate database to production",
+    "successPercent": 100,
+    "importance": 5,
+    "timeline": "1 day",
+    "status": "done",
+    "order": 6
   }
 ]
