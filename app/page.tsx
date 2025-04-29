@@ -36,7 +36,49 @@ const MyComponent = () => (
                                 </div>
                             </div>
                         </div>
+                        <div className={'flex flex-row gap-4 items-center'}>
+                            <h6 className={'poppins-semibold'}>
+                                Important Level:
+                            </h6>
+                            <div className={'flex flex-row gap-6 bg-white p-2 rounded-[10px]'}>
 
+                                <div className={'flex flex-row gap-[8px] items-center '}>
+                                    <h2 className={'poppins-medium text-black'}>
+                                        1
+                                    </h2>
+                                    <div className={'w-[30px] h-[30px] rounded-full !bg-[#ECF2FF]'}>
+
+                                    </div>
+                                </div>
+                                <div className={'flex flex-row gap-[8px] items-center '}>
+                                    <h2 className={'poppins-medium text-black'}>
+                                        2
+                                    </h2>
+                                    <div className={'w-[30px] h-[30px] rounded-full bg-[#BBFFA7]'}>
+
+                                    </div>
+                                </div>
+                                <div className={'flex flex-row gap-[8px] items-center '}>
+                                    <h2 className={'poppins-medium text-black'}>
+                                        3
+                                    </h2>
+                                    <div className={'w-[30px] h-[30px] rounded-full bg-[#1161FF]'}>
+
+                                    </div>
+                                </div>
+                                <div className={'flex flex-row gap-[8px] items-center '}>
+                                    <h2 className={'poppins-medium text-black'}>
+                                        4
+                                    </h2>
+                                    <div className={'w-[30px] h-[30px] rounded-full !bg-[#A530FF]'}>
+
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
                         <KanbanBoard/>
                     </div>
                 </div>

@@ -1,83 +1,23 @@
 [
   {
-    "id": 3,
-    "category": "Database",
-    "name": "Setup PostgreSQL schema",
-    "successPercent": 0,
-    "importance": 3,
-    "timeline": "2 days",
-    "status": "inreview",
-    "order": 0
-  },
-  {
-    "id": 10,
-    "category": "Integration",
-    "name": "Connect frontend with task API",
-    "successPercent": 50,
-    "importance": 5,
-    "timeline": "3 days",
-    "status": "inreview",
-    "order": 1
-  },
-  {
-    "id": 14,
-    "category": "Review",
-    "name": "Final review for frontend components",
+    "id": 5,
+    "category": "Auth",
+    "name": "Integrate JWT authentication",
     "successPercent": 100,
     "importance": 5,
-    "timeline": "1 day",
-    "status": "doing",
+    "timeline": "3 days",
+    "status": "done",
     "order": 0
   },
   {
-    "id": 17,
-    "category": "Testing",
-    "name": "End-to-end testing passed",
-    "successPercent": 40,
-    "importance": 4,
-    "timeline": "1 day",
-    "status": "doing",
-    "order": 1
-  },
-  {
-    "id": 1,
-    "category": "Frontend",
-    "name": "Create login page with TailwindCSS",
-    "successPercent": 15,
-    "importance": 4,
-    "timeline": "3 days",
-    "status": "doing",
-    "order": 2
-  },
-  {
-    "id": 1745586706793,
-    "category": "bu bitti adamım",
-    "name": "finito",
-    "successPercent": 50,
-    "importance": 5,
+    "id": 1745593705540,
+    "category": "okey",
+    "name": "ozkan bugün okey'de kaybedecek",
+    "successPercent": 100,
+    "importance": 1,
     "timeline": "4 days",
-    "status": "todo",
-    "order": 0
-  },
-  {
-    "id": 18,
-    "category": "Docs",
-    "name": "Complete project documentation",
-    "successPercent": 50,
-    "importance": 3,
-    "timeline": "1 day",
-    "status": "todo",
+    "status": "done",
     "order": 1
-  },
-  {
-    "id": 1745586647743,
-    "category": "merhaba linkedin",
-    "name": "emrelutfi",
-    "successPercent": 65,
-    "importance": 4,
-    "timeline": "3 days",
-    "status": "todo",
-    "order": 2
   },
   {
     "id": 8,
@@ -87,7 +27,7 @@
     "importance": 3,
     "timeline": "2 days",
     "status": "done",
-    "order": 0
+    "order": 2
   },
   {
     "id": 1745581900716,
@@ -96,26 +36,6 @@
     "successPercent": 24,
     "importance": 4,
     "timeline": "4 days",
-    "status": "done",
-    "order": 1
-  },
-  {
-    "id": 5,
-    "category": "Auth",
-    "name": "Integrate JWT authentication",
-    "successPercent": 100,
-    "importance": 5,
-    "timeline": "3 days",
-    "status": "done",
-    "order": 2
-  },
-  {
-    "id": 9,
-    "category": "Testing",
-    "name": "Write unit tests for utils",
-    "successPercent": 100,
-    "importance": 4,
-    "timeline": "2 days",
     "status": "done",
     "order": 3
   },
@@ -130,16 +50,6 @@
     "order": 4
   },
   {
-    "id": 12,
-    "category": "Review",
-    "name": "API error handling check",
-    "successPercent": 100,
-    "importance": 4,
-    "timeline": "1 day",
-    "status": "done",
-    "order": 5
-  },
-  {
     "id": 16,
     "category": "Deploy",
     "name": "Migrate database to production",
@@ -147,6 +57,116 @@
     "importance": 5,
     "timeline": "1 day",
     "status": "done",
-    "order": 6
+    "order": 5
+  },
+  {
+    "id": 1745586706793,
+    "category": "bu bitti adamım",
+    "name": "finito",
+    "successPercent": 50,
+    "importance": 5,
+    "timeline": "4 days",
+    "status": "inreview",
+    "order": 0
+  },
+  {
+    "id": 10,
+    "category": "Integration",
+    "name": "Connect frontend with task API",
+    "successPercent": 100,
+    "importance": 5,
+    "timeline": "3 days",
+    "status": "inreview",
+    "order": 1
+  },
+  {
+    "id": 9,
+    "category": "Testing",
+    "name": "Write unit tests for utils",
+    "successPercent": 100,
+    "importance": 4,
+    "timeline": "2 days",
+    "status": "inreview",
+    "order": 2
+  },
+  {
+    "id": 3,
+    "category": "Database",
+    "name": "Setup PostgreSQL schema",
+    "successPercent": 0,
+    "importance": 3,
+    "timeline": "2 days",
+    "status": "inreview",
+    "order": 3
+  },
+  {
+    "id": 17,
+    "category": "Testing",
+    "name": "End-to-end testing passed",
+    "successPercent": 40,
+    "importance": 4,
+    "timeline": "1 day",
+    "status": "inreview",
+    "order": 4
+  },
+  {
+    "id": 1745912827532,
+    "category": "test",
+    "name": "test todo",
+    "successPercent": 100,
+    "importance": 1,
+    "timeline": "1 days",
+    "status": "todo",
+    "order": 0
+  },
+  {
+    "id": 12,
+    "category": "Review",
+    "name": "API error handling check",
+    "successPercent": 100,
+    "importance": 4,
+    "timeline": "1 day",
+    "status": "todo",
+    "order": 1
+  },
+  {
+    "id": 18,
+    "category": "Docs",
+    "name": "Complete project documentation",
+    "successPercent": 50,
+    "importance": 3,
+    "timeline": "1 day",
+    "status": "todo",
+    "order": 2
+  },
+  {
+    "id": 1745586647743,
+    "category": "merhaba linkedin",
+    "name": "emrelutfi",
+    "successPercent": 65,
+    "importance": 4,
+    "timeline": "3 days",
+    "status": "todo",
+    "order": 3
+  },
+  {
+    "id": 14,
+    "category": "Review",
+    "name": "Final review for frontend components",
+    "successPercent": 85,
+    "importance": 5,
+    "timeline": "1 day",
+    "status": "doing",
+    "order": 0
+  },
+  {
+    "id": 1,
+    "category": "Frontend",
+    "name": "Create login page with TailwindCSS",
+    "successPercent": 15,
+    "importance": 4,
+    "timeline": "3 days",
+    "status": "doing",
+    "order": 1
   }
 ]

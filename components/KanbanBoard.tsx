@@ -552,7 +552,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, dragOverlay, deleteTask , inc
             </div>
 
 
-            <div className={`p-2 rounded-[30px] w-fit ${importanceBg}`}>
+            <div className={`p-2 rounded-[10px] w-fit ${importanceBg}`}>
                 <p className="text-xs">{task.category}</p>
             </div>
 
